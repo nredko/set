@@ -1,0 +1,233 @@
+body {
+	font: 14px Arial;
+}
+
+.card {
+	display: table-cell;
+	height: 135px;
+	width: 100px;
+	vertical-align: middle;	
+	align: center;
+	padding: 3px;
+	background: url('../images/card.png') no-repeat;
+}
+
+.card_sign {
+	padding-left: 13px;
+	width: 72px;
+	height: 29px;
+}
+
+.small .card {
+	padding: 3px;
+	background: url('../images/card_small.png') no-repeat;
+	width: 35px;
+	height: 65px;
+}
+
+table.medium td.card {
+	padding: 3px;
+	background: url('../images/card_medium.png') no-repeat;
+	width: 75px;
+	height: 100px;
+}
+
+table.mini td.card {
+	padding: 1px;
+	background: url('../images/card_mini.png') no-repeat;
+	width: 60px;
+	height: 80px;
+}
+
+td.find {
+	background: url('../images/card_find.png') no-repeat;
+}
+
+table.small td.find {
+	background: url('../images/card_small_find.png') no-repeat;
+}
+
+table.medium td.find {
+	background: url('../images/card_medium_find.png') no-repeat;
+}
+
+img.small {
+	padding-left: 3px;
+	width: 25px;
+	height: 10px;
+	image-border: 1px;
+}
+
+img.medium {
+	padding-left: 8px;
+	width: 52px;
+	height: 20px;
+	image-border: 1px;
+}
+
+img.mini {
+	padding-left: 8px;
+	width: 42px;
+	height: 17px;
+	image-border: 1px;
+}
+
+td.selected {
+	background: url('../images/card_selected.png') no-repeat;
+}
+
+.small .selected {
+	background: url('../images/card_small_selected.png') no-repeat;
+} 
+
+table.medium td.selected {
+	background: url('../images/card_medium_selected.png') no-repeat;
+}
+
+table.mini td.selected {
+	background: url('../images/card_mini_selected.png') no-repeat;
+} 
+
+.info, .success, .error, .validation {
+	border: 1px solid;
+	margin: 10px 0px;
+	padding:15px 10px 15px 50px;
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	width: 520px;
+	clear: left;
+}
+
+.info {
+	color: #00529B;
+	background-color: #BDE5F8;
+	background-image: url('../images/info.png');
+}
+
+.success {
+	color: #4F8A10;
+	background-color: #DFF2BF;
+	background-image:url('../images/success.png');
+}
+
+.error {
+	color: #D8000C;
+	background-color: #FFBABA;
+	background-image: url('../images/error.png');
+}
+
+.short {
+	width: 400px;
+}
+
+a.boldbuttons{
+	background: transparent url('../images/roundedge-blue-left.gif') no-repeat top left;
+	display: block;
+	float: left;
+	font: bold 13px Arial; /* Change 13px as desired */
+	line-height: 22px; /* This value + 4px + 4px (top and bottom padding of SPAN) must equal height of button background (default is 30px) */
+	height: 30px; /* Height of button background height */
+	padding-left: 8px; /* Width of left menu image */
+	text-decoration: none;
+	margin-top: 15px;
+}
+
+a:link.boldbuttons, a:visited.boldbuttons, a:hover.boldbuttons, a:active.boldbuttons{
+	color: white; /*button text color*/
+}
+
+a.boldbuttons span{
+	background: transparent url('../images/roundedge-blue-right.gif') no-repeat top right;
+	display: block;
+	padding: 4px 10px 4px 2px; /*Set 10px to be equal or greater than'padding-left' value above*/
+}
+
+a.fixed span {
+	width: 100px;
+}
+
+a:hover.boldbuttons { /* Hover state CSS */
+	text-decoration: underline;
+}
+
+.buttonwrapper { 
+	overflow: hidden; 
+}
+
+div#menu {
+	width: 150px;
+	float: left;
+}
+
+a.boldbuttons.selected span {
+	color: yellow;
+	font-size: 1.2em;
+}
+
+.won {
+	color: green;
+	font-weight: bold;
+}
+
+.loose {
+	color: red;
+	font-weight: bold;
+}
+
+#start_game {
+	margin: auto;
+	width: 200px;
+}
+
+.b {
+	font-weight: bold;
+}
+
+.vkgroup img {
+	height: 20px; 
+	vertical-align: middle;
+}
+
+.rblock {
+	display: block;
+	float: right;
+}
+
+.inside_tab {
+	border: 1px solid gray;
+	padding: 7px;
+	margin-top: -5px;
+}
+
+.tab_nav {
+	list-style: none;
+	display: block;
+	height: 25px;
+	margin: 0;
+	padding: 0;
+}
+
+.tab_nav li {
+	list-style: none;
+	display: list-item;
+	float: left;
+	padding-right: 5px;
+	height: 25px;
+}
+
+
+.tab_nav li span.outer {
+	background: url("../images/tabs/tab-right.gif") no-repeat 100% 0;
+	color: #06C;
+	padding: 5px 0;
+	text-decoration: none;
+}
+
+.tab_nav li span.inner {
+	background: url("../images/tabs/tab-left.gif") no-repeat;
+	padding: 5px 1em;
+}
+
+.tab_block {
+	margin-top: 12px;
+}
