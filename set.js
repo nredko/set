@@ -10,6 +10,7 @@ Array.prototype.shuffle = function() {
 
 var cards = [];
 var Count = 12;
+var SelCount = 0;
 var _Figure = ['diamond', 'oval', 'squiggle'];
 var _Style = ['solid', 'striped', 'open'];
 var _Color = ['blue', 'green', 'red'];
@@ -35,6 +36,7 @@ function init(){
                     cards[i].style = style;
                     cards[i].color = color;
                     cards[i].count = cnt;
+                    cards[i].selected = false;
                     cards[i].html = card_html(fig, style, color, cnt);
                     i++;
                 }
@@ -45,8 +47,18 @@ function init(){
 }
 function go(elem){
     ind = $(elem).attr('i');
-    alert("fig:"+cards[ind].fig );
-    $(elem).find('div:first').addClass("selected");
+    cards[ind].selected = !cards[ind].selected;
+    if(cards[ind].selected){
+        $(elem).find('div:first').removeClass("selected");
+        SelCount--;
+    }
+    else {
+        $(elem).find('div:first').addClass("selected");
+        SelCount++;
+        if(SelCount == 3){
+            Check();
+        }
+    }
 }
 
 function draw(){
