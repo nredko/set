@@ -16,12 +16,14 @@ var _Style = ['solid', 'striped', 'open'];
 var _Color = ['blue', 'green', 'red'];
 
 function card_html(fig, style, color, count){
-    html = '<div class="box elem"><div class="box td card">';
+    //html = '<div class="box elem"><div class="box td card">';
+    html = '<td>';
     img = '<img src="' + _Figure[fig] + '_' + _Style[style] + '_' + _Color[color] + '.png' + '" />';
     for(var i = 0; i <= count; i++){
         html += img;
     }
-    html += "</div></div>";
+//    html += "</div></div>";
+    html += "</td>";
     return html;
 }
 
@@ -47,13 +49,16 @@ function init(){
 }
 function go(elem){
     ind = $(elem).attr('i');
+    console.log(ind);
     cards[ind].selected = !cards[ind].selected;
     if(cards[ind].selected){
-        $(elem).find('div:first').removeClass("selected");
+        $(elem).addClass("not_selected");
+        $(elem).removeClass("selected");
         SelCount--;
     }
     else {
-        $(elem).find('div:first').addClass("selected");
+        $(elem).removeClass("not_selected");
+        $(elem).addClass("selected");
         SelCount++;
         if(SelCount == 3){
             Check();
@@ -62,14 +67,25 @@ function go(elem){
 }
 
 function draw(){
-    $(".content").empty();
-    for(var i = 0; i < Count && i < cards.length; i++){
-        elem = $(cards[i].html);
-        elem.attr('i', i);
-        elem.click(function(){
-            go(this);
-        });
-        $(".content").append(elem);
+    $(".game").empty();
+    cols = Math.ceil(Math.min(Count, cards.length) / 3) ;
+    var i = 0;
+    for(var rownum = 0; rownum < 3; rownum++){
+        var row = $("<tr></tr>");
+        for(var colnum = 0; colnum < cols; colnum++){
+            var i = colnum*3 + rownum;
+            if(i < cards.length){
+                td = $(cards[i].html);
+                td.attr('i', i);
+                td.click(function(){
+                    go(this);
+                });
+            } else {
+                td = $("<td></td>");
+            }
+            row.append(td);
+        }
+        $(".game").append(row);
     }
 }
 $(document).ready(function(){
