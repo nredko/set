@@ -89,6 +89,11 @@ function check(){
         if(Count > 12)
             Count -=3;
         draw();
+        if(!has_set() && cards.length <= 12){
+            showAlert("Игра закончена.");
+            return;
+        }
+
     } else {
         showAlert("Неправильно! Это не СЕТ.");
     }
@@ -111,6 +116,12 @@ function has_set(){
 
 function hint(){
     clear();
+    if(!has_set()){
+        showAlert("Нет вариантов");
+        LastHint = [0,0,0];
+        return;
+    }
+
     var cnt = Math.min(Count, cards.length);
     for(i = LastHint[0]; i < cnt; i++){
         for(j = Math.max(i + 1, LastHint[1]); j < cnt; j++){
@@ -149,7 +160,7 @@ function showAlert(str){
 }
 
 function go(elem){
-    LastHint = [0,0,0];
+    LastHint = 0;
     showAlert("");
     ind = $(elem).attr('i');
     cards[ind].selected = !cards[ind].selected;
