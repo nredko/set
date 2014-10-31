@@ -48,7 +48,7 @@ function init(){
         }
     }
     cards = cards.shuffle();
-    cards.splice(12);
+    //cards.splice(12);
 }
 
 function clear(){
@@ -57,8 +57,8 @@ function clear(){
         cards[i].hint = false;
     }
     SelCount = 0;
-    LastHint = [0,0,0];
 }
+
 function triple(v1, v2, v3){
     return ((v1 == v2 && v2 == v3) || (v1 != v2 && v2!= v3 && v1 != v3));
 }
@@ -85,18 +85,31 @@ function check(){
         cards.splice(selected[1].num, 1);
         cards.splice(selected[0].num, 1);
         clear();
+        LastHint = [0,0,0];
         if(Count > 12)
             Count -=3;
         draw();
-        if(!hint(false) && cards.length <= 12){
-             showAlert("Больше ходов нет!");
-        }
     } else {
         showAlert("Неправильно! Это не СЕТ.");
     }
 }
 
-function hint(need_draw){
+function has_set(){
+    var cnt = Math.min(Count, cards.length);
+    for(var i = 0; i < cnt; i++){
+        for(var j = i + 1; j < cnt; j++){
+            for(var k = j + 1; k < cnt; k++){
+                if(is_set(cards[i], cards[j], cards[k])) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
+
+function hint(){
     clear();
     var cnt = Math.min(Count, cards.length);
     for(i = LastHint[0]; i < cnt; i++){
@@ -117,11 +130,9 @@ function hint(need_draw){
                     if(i == cnt){
                         i = 0;
                     }
-                    if(need_draw){
-                        LastHint = [i, j, k];
-                        draw();
-                    }
-                    return true;
+                    LastHint = [i, j, k];
+                    draw();
+                    return;
                 }    
             }
             LastHint[2] = 0;
@@ -129,7 +140,6 @@ function hint(need_draw){
         LastHint[1] = 0;
     }
     LastHint[0] = 0;
-    return false;
 }
 
 function showAlert(str){
@@ -194,10 +204,11 @@ $(document).ready(function(){
         if(Count < 21){
             Count += 3;
             clear();
+            LastHint = [0,0,0];
         }
         draw();
     });
     $("#hint").click(function(){
-        hint(true);
+        hint();
     });
 });
