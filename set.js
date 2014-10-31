@@ -149,7 +149,7 @@ function showAlert(str){
 }
 
 function go(elem){
-    LastHint = 0;
+    LastHint = [0,0,0];
     showAlert("");
     ind = $(elem).attr('i');
     cards[ind].selected = !cards[ind].selected;
