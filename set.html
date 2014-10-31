@@ -14,37 +14,13 @@ html, body
 {
   height: 100%;
   margin-bottom:0px;
+  margin-top:0px;
 }
 body{
     background-color: #C0C0C0;
-}
-
-.center{
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;
 }
 
-
-.row  {
-    display: table-row;
-    }
-.game tr td{
-    display: table-cell;
-    height: 135px;
-    width: 100px;
-    vertical-align: middle; 
-    text-align: center;
-    background: url('card.png') no-repeat;
-}
-.selected{
-    background: url('card_selected.png') no-repeat !important;
-}
-
-.box img{
-    width: 75px;
-    height: 29px;
-}
 
 a {
     -webkit-border-radius: 4px;
@@ -62,7 +38,8 @@ a {
     font-family: "Gill Sans MT", "Gill Sans", "GillSans", "Arial", "Helvetica", sans-serif;
 
 }
-.alert{
+
+#alert{
     text-align: center;
     color: #F00;
     font-weight: bold;
@@ -70,20 +47,47 @@ a {
     font-family: "Gill Sans MT", "Gill Sans", "GillSans", "Arial", "Helvetica", sans-serif;
 
 }
-.box {
-    float: left;
-    height: 135px;
-    width: 100px;
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 5s, opacity 5s linear;
+}
+
+div.container {
+    width:98%; 
+    margin:1%;
+}
+.game {
+    margin: auto; 
+}
+.game tr td{
+    display: table-cell;
+    width: 125px;
+    height: 170px;
     vertical-align: middle; 
     text-align: center;
+    background: url('card.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: auto;
+    margin-right:auto;
+}
+.game tr td img{
+    height: 40px;
+}
 
+.selected{
+    background: url('card_selected.png') !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
 }
-.elem{
-    position:relative;
+.hint{
+    background: url('card_hint.png') !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
 }
-div {
-    display: inline-block;
-}
+
 </style>
 
 <script type="text/javascript" src="set.js"></script>
@@ -92,8 +96,10 @@ div {
 <table style="width:100%;padding-top:15px;padding-bottom:15px;">
 <tr>
 <td style="text-align:left;width:25%;"><a href="#" id="next">Еще 3 карты</a></td>
-<td style="text-align:center;width:50%;"><span class="alert">sdfgs dfgsd </span></td>
+<td style="text-align:center;width:50%;"><span id="alert"></span></td>
 <td style="text-align:right;width:25%;"><a id="hint" href="#">Подсказка</a></td>
 </tr></table>
+<div class="container">
 <table class="game"></table>
+</div>
 </body></html>
