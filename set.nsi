@@ -1,7 +1,7 @@
 Name "SET"
 OutFile "set.exe"
 SilentInstall silent
-Icon "D:\home\SET\set.ico"
+Icon "set.ico"
 InstallDir "$TEMP\SET"
 RequestExecutionLevel user
 
